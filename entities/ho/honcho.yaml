@@ -23,17 +23,17 @@ offers:
     offer_slug: startup-credits-and-subsidized-pricing
     offer_slug_aliases: []
     title: Honcho startup credits and subsidized pricing
-    summary: Startups with less than USD 5 million raised can apply for USD 1,000 in credits, 12 months of subsidized pricing, and integration support.
+    summary: Startups that have raised less than USD 5 million can apply for USD 1,000 in Honcho credits, 12 months of subsidized pricing, and integration support.
     lifecycle:
       status: active
       effective_from: 2026-09-06T11:40:00.000Z
     economics:
       consideration:
-        kind: unknown
-        description: The public startup offer does not specify separate consideration.
+        kind: variable
+        description: Approved startups get 12 months of subsidized pricing alongside the USD 1,000 in credits; the page does not publish the subsidized rates.
       benefits:
         - benefit_id: ben_credits
-          description: USD 1,000 in Honcho credits.
+          description: $1,000 in credits.
           kind: credit
           value:
             kind: exact
@@ -41,27 +41,21 @@ offers:
               currency: USD
               minor_units: 100000
         - benefit_id: ben_pricing
-          description: Twelve months of subsidized pricing; the subsidy rate is not published.
+          description: 12 months subsidized pricing.
           kind: other
         - benefit_id: ben_support
           description: Integration support.
           kind: other
     eligibility:
       rule:
-        kind: all
-        rules:
-          - criterion_id: cri_startup
-            kind: manual
-            reason: not-machine-evaluable
-            statement: Applicant must be a startup.
-          - criterion_id: cri_funding
-            fact: company.funding_raised_usd
-            kind: predicate
-            operator: lt
-            statement: Startup has raised less than USD 5 million.
-            value:
-              type: number
-              value: 5000000
+        criterion_id: cri_funding
+        fact: company.funding_raised_usd
+        kind: predicate
+        operator: lt
+        statement: The startup has raised less than USD 5 million.
+        value:
+          type: number
+          value: 5000000
     roles:
       terms_authority_entity_id: ent_01m1v8ag3gcf09z2685me31q1p
       access_operator_entity_id: ent_01m1v8ag3gcf09z2685me31q1p
@@ -69,5 +63,6 @@ offers:
       availability: public
       method: form
       url: https://honcho.dev/
+      instructions: Use Apply Now in the Startups tier of the pricing section on honcho.dev, which opens the startup application form.
     source_ids:
       - src_9afc3906602245307cffa767bac78c56
